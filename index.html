@@ -19,23 +19,80 @@
   <div class="container">
     <h1>Docs of API</h1>
     <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>Method</td>
-          <td>path</td>
-          <td>info</td>
-          <td>link</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>GET</td>
-          <td>/toys</td>
-          <td><a href="https://node-js-bicx.onrender.com/toys" target="_blank">Try it</a></td>
-          <td> </td>
-        </tr>
-          </tbody>
-    </table>
+        <thead>
+          <tr>
+            <td>Method</td>
+            <td>Path</td>
+            <td>Info</td>
+            <td>Link</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GET</td>
+            <td>/toys</td>
+            <td>Get all toys (paginated, 10 per page)</td>
+            <td><a href="https://node-js-bicx.onrender.com/toys?skip=0" target="_blank">https://node-js-bicx.onrender.com/toys?skip=0</a> <br> 
+                <a href="https://node-js-bicx.onrender.com/toys?skip=10" target="_blank">https://node-js-bicx.onrender.com/toys?skip=10</a> 
+                
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/toys/search</td>
+            <td>Search by name or info</td>
+            <td><a href="https://node-js-bicx.onrender.com/toys/search?s=Bicycle2025" target="_blank">https://node-js-bicx.onrender.com/toys/search?s=Bicycle2025</a> <br>
+                <a href="https://node-js-bicx.onrender.com/toys/search?s=red car" target="_blank">https://node-js-bicx.onrender.com/toys/search?s=red car</a> <br>
+                <a href="https://node-js-bicx.onrender.com/toys/search?s=Ramikov" target="_blank">https://node-js-bicx.onrender.com/toys/search?s=Ramikov</a></td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/toys/category/:catname</td>
+            <td>Get toys by category</td>
+            <td><a href="https://node-js-bicx.onrender.com/toys/category/Bicycles" target="_blank">https://node-js-bicx.onrender.com/toys/category/Bicycles</a> <br>
+                <a href="https://node-js-bicx.onrender.com/toys/category/Remote cars" target="_blank">https://node-js-bicx.onrender.com/toys/category/Remote cars</a> <br>
+                <a href="https://node-js-bicx.onrender.com/toys/category/board games" target="_blank">https://node-js-bicx.onrender.com/toys/category/board games</a></td>
+          </tr>
+          <tr>
+            <td>POST</td>
+            <td>/toys</td>
+            <td>Add a new toy (Requires Token)</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>PUT</td>
+            <td>/toys/:id</td>
+            <td>Edit a toy (Requires Token, UserID match)</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>DELETE</td>
+            <td>/toys/:id</td>
+            <td>Delete a toy (Requires Token, UserID match)</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/toys/prices</td>
+            <td>Get toys by price range</td>
+            <td><a href="https://node-js-bicx.onrender.com/toys/prices?min=10&max=40" target="_blank">https://node-js-bicx.onrender.com/toys/prices?min=10&max=40</a> <br> 
+                <a href="https://node-js-bicx.onrender.com/toys/prices?min=50&max=100" target="_blank">https://node-js-bicx.onrender.com/toys/prices?min=50&max=100</a> <br>
+                <a href="https://node-js-bicx.onrender.com/toys/prices?min=100&max=200" target="_blank">https://node-js-bicx.onrender.com/toys/prices?min=100&max=200</a></td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/toys/single/:id</td>
+            <td>Get a single toy by ID</td>
+            <td><a href="https://node-js-bicx.onrender.com/toys/single/679b6fa58fbd7a48c0390571" target="_blank">https://node-js-bicx.onrender.com/toys/single/679b6fa58fbd7a48c0390571</a></td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/toys/count</td>
+            <td>Get total number of toys</td>
+            <td><a href="https://node-js-bicx.onrender.com/toys/count" target="_blank">https://node-js-bicx.onrender.com/toys/count</a></td>
+          </tr>
+        </tbody>
+      </table>
+      
   </div>
 </body>
 </html>
