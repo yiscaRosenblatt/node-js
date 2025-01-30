@@ -5,39 +5,29 @@ const router = express.Router();
 
 
 
-
-
-
-router.get("/",async(req,res) => {
+router.get("/", async (req, res) => {
   const limit = 10;
   const skip = req.query.skip || 0;
-  const sort = req.query.sort || "_id";
-  const category_id = req.query.category_id
-  const searchQ = req.query.s;
+  const search = req.query.s;
+  const categoryName = req.query.category;
 
-  const findFilter = {}
-  if(category_id){
-    findFilter.category_id = category_id
+  const findFilter = {};
+  if (search) {
+    const searchExp = new RegExp(search, "i");
+    findFilter.$or = [{ name: searchExp }, { category: searchExp }];
   }
-  if(searchQ){
-    
-    const searchExp = new RegExp(searchQ ,"i")
-  
-    findFilter.$or = [{name:searchExp},{category_id:searchExp}]
+  if (categoryName) {
+    findFilter.category = new RegExp(categoryName, "i");
   }
-  
+
   try {
-    const data = await ToyModel
-    .find(findFilter)
-    .limit(limit)
-    .skip(skip)
-    res.json(data)
-  } 
-  catch(err) {
+    const data = await ToyModel.find(findFilter).limit(limit).skip(skip);
+    res.json(data);
+  } catch (err) {
     console.log(err);
-    res.status(502).json( {err})
+    res.status(502).json({ err });
   }
-})
+});
 
 
 
