@@ -1,0 +1,22 @@
+משימה לעכשיו: עד 14:20
+1. טיפ:לעבוד עם AXIOS
+צרו ROUTER חדש בשם movies
+
+שכאשר נכנסים לעמוד בית שלו
+localhost:3001/movies
+
+נקבל את הרשימה שמופעיה בתוך מאפיין ITEMS כאן:
+https://api.themoviedb.org/3/list/3?api_key=d4bc3c640586e7f90dc68d8b300247ff&language=en-US
+
+2.
+בנוסף ב MOVIES יהיה לנו ראוטר נוסף של SINGLE שמקבל כ PARAMS את ה ID של הסרט , ככה שאם נניח נכנס לכתובת
+
+localhost:3001/movies/single/565770
+
+נקבל את הפרטים של הסרט Blue Beetle 
+
+3.
+ROUTER נוסף שיהיה ב MOVIES יהיה ראוטר RATING שלפיו יוצגו סרטים שהציון שלהם הוא מעל הערך שנמצא ב RATING ותלכו לפי המאפיין שנקרא
+vote_average שמגיע מה API
+
+localhost:3001/movies/rating?rating=8
