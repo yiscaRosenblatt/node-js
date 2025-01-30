@@ -5,56 +5,39 @@ const router = express.Router();
 
 
 
-router.get("/", async (req, res) => {
-  try {
-    let skip = Number(req.query.skip) || 0;
-    let data = await ToyModel.find({})
-      .limit(10)
-      .skip(skip * 10);
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+
+
+
+router.get("/",async(req,res) => {
+  const limit = 10;
+  const skip = req.query.skip || 0;
+  const sort = req.query.sort || "_id";
+  const category_id = req.query.category_id
+  const searchQ = req.query.s;
+
+  const findFilter = {}
+  if(category_id){
+    findFilter.category_id = category_id
   }
-});
-
-router.get("/search", async (req, res) => {
-    try {
-      let searchQuery = req.query.s || "";
-      let skip = Number(req.query.skip) || 0;
-
-      let data = await ToyModel.find({
-        $or: [
-          { name: { $regex: searchQuery, $options: "i" } }, 
-          { info: { $regex: searchQuery, $options: "i" } }
-        ]
-      })
-      .limit(10)
-      .skip(skip * 10);
-
-      res.json(data);
-    } catch (err) {
-      res.status(400).json({ error: err.message });
-    }
-  });
-
-router.get("/category/:catname", async (req, res) => {
-  try {
-    let category = req.params.catname;
-    let skip = Number(req.query.skip) || 0;
-
-    let data = await ToyModel.find({ category: category })
-      .limit(10)
-      .skip(skip * 10);
-
-    res.json(data);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
+  if(searchQ){
+    
+    const searchExp = new RegExp(searchQ ,"i")
+  
+    findFilter.$or = [{name:searchExp},{category_id:searchExp}]
   }
-});
-
-
-
-
+  
+  try {
+    const data = await ToyModel
+    .find(findFilter)
+    .limit(limit)
+    .skip(skip)
+    res.json(data)
+  } 
+  catch(err) {
+    console.log(err);
+    res.status(502).json( {err})
+  }
+})
 
 
 
